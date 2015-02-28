@@ -4,8 +4,16 @@ public class Intervalo {
     private int min, max;
 
     public Intervalo(int min, int max) {
-        this.max = min;
-        this.min = max;
+        this.min = min;
+        this.max = max;
+    }
+
+    public int getMin() {
+        return this.min;
+    }
+
+    public int getMax() {
+        return this.max;
     }
 
     public int longitud() {
@@ -13,7 +21,7 @@ public class Intervalo {
     }
 
     public double puntoMedio() {
-        return this.longitud() / 2;
+        return this.min + (double)this.longitud()/2;
     }
 
     public boolean incluyePunto(int punto) {
