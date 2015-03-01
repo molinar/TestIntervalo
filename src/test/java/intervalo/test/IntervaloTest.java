@@ -17,40 +17,57 @@ public class IntervaloTest {
     
     @Test
     public void testIntervalo(){
-        while(data.hasNextInterval()){            
+        while(data.hasNextInterval()){    
+            data.nextInterval();            
             Intervalo intervalo = new Intervalo(data.getIntervalo().getMin(), data.getIntervalo().getMax());
-            System.out.println(data.getIntervalo().getMax());
-            System.out.println(intervalo.getMax());
             assertEquals(data.message(),data.getIntervalo().getMax(), intervalo.getMax());
             assertEquals(data.message(),data.getIntervalo().getMin(), intervalo.getMin());
-            data.nextInterval();
         }
     }
     
     @Test
     public void testLongitud(){
         while(data.hasNextInterval()){
+            data.nextInterval();
             Intervalo intervalo = data.getIntervalo();
             assertEquals(data.message(), data.getLongitud(), intervalo.longitud());
-            data.nextInterval();
         }
     }
    
     @Test
     public void testPuntoMedio(){
         while(data.hasNextInterval()){
+            data.nextInterval();
             Intervalo intervalo = data.getIntervalo();
             assertEquals(data.message(), data.getPuntoMedio(), intervalo.puntoMedio(), intervalo.puntoMedio());
-            data.nextInterval();
         }
     }
     
     @Test
     public void testPuntoIncluido(){
         while(data.hasNextInterval()){
-            Intervalo intervalo = data.getIntervalo();
-            assertEquals(data.getIncluyeEntero(), intervalo.incluyePunto(data.getPuntoIncluido()));
             data.nextInterval();
+            Intervalo intervalo = data.getIntervalo();
+            assertEquals(data.message(), data.getIncluyeEntero(), intervalo.incluyePunto(data.getPuntoIncluido()));
+        }
+    }
+    
+    @Test
+    public void testIntervaloIncluido(){
+        while(data.hasNextInterval()){
+            data.nextInterval();
+            Intervalo intervalo = data.getIntervalo();
+            assertEquals(data.message(), data.getIncluyeIntervalo(), intervalo.incluyeIntervalo(data.getIntervaloIncluido()));
+        }
+    }
+    
+    @Test
+    public void testInterseccion(){
+        while (data.hasNextInterval()){
+            data.nextInterval();
+            Intervalo intervalo = data.getIntervalo();
+            assertEquals(data.message(), data.getInterseccion().getMin(), intervalo.interseccion(data.getIntervaloInterseccion()).getMin());
+            assertEquals(data.message(), data.getInterseccion().getMax(), intervalo.interseccion(data.getIntervaloInterseccion()).getMax());
         }
     }
 

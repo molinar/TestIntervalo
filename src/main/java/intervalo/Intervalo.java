@@ -32,9 +32,9 @@ public class Intervalo {
         return (this.max >= intervalo.max) && (this.min <= intervalo.min);
     }
 
-    public Intervalo interseccion(Intervalo intervalo) {//Mirar assert
+    public Intervalo interseccion(Intervalo intervalo) {
         Intervalo resultado = new Intervalo(0, 0);
-        
+                
         if (this.incluyeIntervalo(intervalo)) {
             resultado = intervalo;
         } else if (intervalo.incluyeIntervalo(this)) {
